@@ -41,4 +41,33 @@ class Solution {
         }
         return res;
     }
+
+    public List<List<String>> groupAnagrams2(String[] strs) {
+        List<List<String>> res = new ArrayList<>();
+        if (strs == null || strs.length == 0) return res;
+        HashMap<String, List<String>> cache = new HashMap<>();
+
+        for (int i=0;i<strs.length;i++) {
+            String str = "";
+            int[] count = new int[26];
+            for (int j=0;j<strs[i].length();j++) {
+                count[strs[i].charAt(j)-'a']++;
+            }
+            for (int j=0;j<count.length;j++) {
+                str+=String.valueOf(count[j])+String.valueOf((char)(j+'a'));
+            }
+            if (cache.containsKey(str)){
+                cache.get(str).add(strs[i]);
+            }
+            else {
+                List<String> r = new ArrayList<>();
+                r.add(strs[i]);
+                cache.put(str,r);
+            }
+        }
+        for (String key: cache.keySet()) {
+            res.add(cache.get(key));
+        }
+        return res;
+    }
 }
