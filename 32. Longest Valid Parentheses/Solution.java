@@ -12,19 +12,31 @@ Input: ")()())"
 Output: 4
 Explanation: The longest valid parentheses substring is "()()"
 */
-xxx[ji]
-dp[i] = Math.max(dp[j-1]+1,dp[i])
 class Solution {
     public int longestValidParentheses(String s) {
         if (s == null || s.length() < 2) return 0;
-        int[] dp = new int[s.length()];
-        for (int i=1;i<s.length();i++) {
-            for (int j=0;j<i;j++) {
-                if ()
-                if (isValid(j,i)) {
-
+        int left = -1, max =0;
+        Stack<Integer> cache = new Stack<>();
+        for (int right =0;right<s.length();right++) {
+            if (s.charAt(right)=='(') {
+                cache.push(right);
+            }
+            else {
+                if (cache.isEmpty()) {
+                    left = right
+                }
+                else {
+                    cache.pop();
+                    if (cache.isEmpty()) {
+                        max = Math.max(max, right-left);
+                    }
+                    else {
+                        max = Math.max(max, right-cache.peak());
+                    }
                 }
             }
         }
+        return max;
+
     }
 }
