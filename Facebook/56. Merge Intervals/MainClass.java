@@ -1,10 +1,7 @@
 public class MainClass {
     public static void main(String... args) {
         Solution s = new Solution();
-        int[] tc1 = new int[] {2,4,5,1,2};
-        int[] result = s.productExceptSelf(tc1);
-
+        int[][] tc1 = new int[][] {{1,4},{8,19},{2,10},{29,60},{2,100}};
+        int[][] result = s.merge(tc1);
     }
-
 }
-

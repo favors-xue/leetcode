@@ -35,7 +35,7 @@ class Solution {
             right[i] = right[i+1]*nums[i+1];
         }
 
-        for (int i=0;i<len;i++ {
+        for (int i=0;i<len;i++) {
             res[i] = left[i]*right[i];
         }
         return res;
